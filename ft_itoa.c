@@ -6,37 +6,57 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 21:05:55 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/11 00:36:18 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/12 11:34:09 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+static size_t		getlen(int num)
+{
+	size_t		len;
+
+	len = 0;
+	if (num == 0)
+		return (1);
+	if (num < 0)
+	{
+		num *= -1;
+		len++;
+	}
+	while (num > 0)
+	{
+		num /= 10;
+		len++;
+	}
+	return (len);
+}
+
+char				*ft_itoa(int n)
 {
 	char	*str;
-	long	nbr;
-	size_t	size;
+	int		i;
 
-	nbr = n;
-	size = n > 0 ? 0 : 1;
-	nbr = nbr > 0 ? nbr : -nbr;
-	while (n)
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	i = getlen(n);
+	str = (char*)malloc(i + 1);
+	if (str == NULL)
+		return (NULL);
+	str[i] = '\0';
+	i--;
+	if (n == 0)
+		str[0] = '0';
+	else if (n < 0)
 	{
+		str[0] = '-';
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		str[i] = '0' + (n % 10);
 		n /= 10;
-		size++;
+		i--;
 	}
-	if (!(str = (char *)malloc(size + 1)))
-		return (0);
-	*(str + size--) = '\0';
-	while (nbr > 0)
-	{
-		*(str + size--) = nbr % 10 + '0';
-		nbr /= 10;
-	}
-	if (size == 0 && str[1] == '\0')
-		*(str + size) = '0';
-	else if (size == 0 && str[1] != '\0')
-		*(str + size) = '-';
 	return (str);
 }

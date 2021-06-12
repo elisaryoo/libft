@@ -6,7 +6,7 @@
 #    By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/10 23:22:10 by eryoo             #+#    #+#              #
-#    Updated: 2021/06/11 17:41:45 by eryoo            ###   ########.fr        #
+#    Updated: 2021/06/11 18:11:44 by eryoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ bonus:
 			$(MAKE) WITH_BONUS=1 $(NAME)
 
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS) $(SRCS_BONUS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS) $(OBJS_BONUS)
 
 .PHONY:		all clean fclean re bonus so

@@ -6,13 +6,13 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 18:18:20 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/10 18:19:20 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/12 15:59:04 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int c)
+int    ft_isprint(int c)
 {
     if (c >= 32 && c <= 126)
         return (1);
