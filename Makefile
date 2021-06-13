@@ -6,7 +6,7 @@
 #    By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/10 23:22:10 by eryoo             #+#    #+#              #
-#    Updated: 2021/06/13 14:23:08 by eryoo            ###   ########.fr        #
+#    Updated: 2021/06/13 15:36:56 by eryoo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,4 +86,8 @@ re:			fclean all
 bonus:
 			$(MAKE) WITH_BONUS=1 $(NAME)
 
-.PHONY:		all clean fclean re bonus
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJ)
+
+.PHONY:		all clean fclean re bonus so
