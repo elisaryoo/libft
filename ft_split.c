@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 00:40:25 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 11:30:03 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 12:38:01 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	split(char const *s, char c, char **str)
 			start = i;
 			while (s[i] != c && s[i])
 				i++;
-			if (!(str[j] = (char *)malloc(sizeof(char) * (i - start + 1))))
+			if (!(str[j] = malloc(sizeof(char) * (i - start + 1))))
 				return ;
 			copy(str[j], s, start, i);
 			j++;
@@ -79,7 +79,7 @@ char	**ft_split(char const *s, char c)
 	if (s == 0)
 		return (NULL);
 	n = get_count(s, c);
-	if (!(str = (char **)malloc(sizeof(char *) * (n + 1))))
+	if (!(str = malloc(sizeof(char *) * (n + 1))))
 		return (NULL);
 	str[n] = 0;
 	if (n == 0)

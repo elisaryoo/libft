@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 21:05:55 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 10:57:52 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 12:28:39 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static size_t	getlen(int num)
 		return (1);
 	if (num < 0)
 	{
-		num *= -1; 
+		num *= -1;
 		len++;
 	}
 	while (num > 0)
@@ -40,7 +40,7 @@ char	*ft_itoa(int n)
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	i = getlen(n);
-	str = (char*)malloc(i + 1);
+	str = (char *)malloc(i + 1);
 	if (str == NULL)
 		return (NULL);
 	str[i] = '\0';

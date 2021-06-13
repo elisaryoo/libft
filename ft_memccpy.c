@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:22:43 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 11:06:47 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 12:22:27 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char *dest;
-	unsigned char *source;
-	size_t i;
+	unsigned char	*dest;
+	unsigned char	*source;
+	size_t			i;
 
 	dest = (unsigned char *)dst;
 	source = (unsigned char *)src;

@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 20:20:47 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 11:14:30 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 12:14:26 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_putstr_fd(char *s, int fd)
 	size_t	i;
 
 	i = 0;
-	if(s != NULL)
+	if (s != NULL)
 	{
 		while (s[i] != '\0')
 		{

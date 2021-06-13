@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 20:37:30 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 11:14:13 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 12:15:51 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_putnbr_fd(int n, int fd)
 			c = n + '0';
 			write(fd, &c, 1);
 		}
-		else 
+		else
 		{
 			ft_putnbr_fd(n / 10, fd);
 			c = (n % 10) + '0';
