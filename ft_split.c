@@ -6,86 +6,97 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 00:40:25 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 13:29:15 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 16:38:54 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	get_count(const char *s, char c)
+static size_t	word_count(const char *s, char c)
 {
+	int		is_word;
 	size_t	count;
-	size_t	i;
-	int		flag;
 
-	i = 0;
 	count = 0;
-	flag = 0;
-	while (s[i])
+	is_word = 0;
+	while (*s)
 	{
-		if (s[i] == c && s[i])
-			flag = 0;
-		else if (!flag && s[i] != c && s[i])
+		if (!is_word && *s != c)
 		{
+			is_word = 1;
 			count++;
-			flag = 1;
 		}
-		i++;
+		else if (is_word && *s == c)
+			is_word = 0;
+		s++;
 	}
 	return (count);
 }
 
-void	copy(char *dst, char const *src, size_t start, size_t end)
+static size_t	get_wordlen(const char *s, char c)
 {
-	size_t	i;
+	size_t	offset;
 
-	i = 0;
-	while (start < end)
-		dst[i++] = src[start++];
-	dst[i] = 0;
+	offset = 0;
+	while (s[offset] && s[offset] != c)
+		offset++;
+	return (offset);
 }
 
-void	split(char const *s, char c, char **str)
+static char	*copy(const char *s, size_t len)
 {
-	size_t	start;
-	size_t	i;
-	size_t	j;
+	char	*str;
+	size_t	offset;
 
-	start = 0;
-	i = 0;
-	j = 0;
-	while (s[i])
+	str = malloc(len + 1);
+	if (str == NULL)
+		return (NULL);
+	offset = 0;
+	while (offset < len)
 	{
-		if (s[i] != c && s[i])
-		{
-			start = i;
-			str[j] = (char *)malloc(sizeof(char) * (i - start + 1));
-			while (s[i] != c && s[i])
-				i++;
-			if (!str[j])
-				return ;
-			copy(str[j], s, start, i);
-			j++;
-		}
-		else if (s[i])
-			i++;
+		str[offset] = s[offset];
+		offset++;
 	}
+	str[offset] = '\0';
+	return (str);
 }
 
-char	**ft_split(char const *s, char c)
+static void	*kill(char **res, size_t stop)
 {
-	char	**str;
-	size_t	n;
+	size_t	counter;
 
-	if (s == 0)
+	counter = 0;
+	while (counter < stop)
+		free(res[counter]);
+	free(res);
+	return (NULL);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**res;
+	size_t	len;
+	size_t	words;
+	size_t	counter;
+
+	if (s == NULL)
 		return (NULL);
-	n = get_count(s, c);
-	str = (char **)malloc(sizeof(char *) * (n + 1));
-	if (!str)
+	words = word_count(s, c);
+	res = malloc((words + 1) * sizeof(char *));
+	if (res == NULL)
 		return (NULL);
-	str[n] = 0;
-	if (n == 0)
-		return (str);
-	split(s, c, str);
-	return (str);
+	counter = 0;
+	while (counter < words)
+	{
+		len = get_wordlen(s, c);
+		if (len)
+		{
+			res[counter] = copy(s, len);
+			if (res[counter++] == NULL)
+				return (kill(res, counter - 1));
+		}
+		s += len + 1;
+	}
+	res[counter] = NULL;
+	return (res);
 }
