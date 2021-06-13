@@ -6,15 +6,15 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 21:05:55 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 01:02:03 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 10:57:52 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		getlen(int num)
+static size_t	getlen(int num)
 {
-	size_t		len;
+	size_t	len;
 
 	len = 0;
 	if (num == 0)
@@ -32,7 +32,7 @@ static size_t		getlen(int num)
 	return (len);
 }
 
-char				*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		i;

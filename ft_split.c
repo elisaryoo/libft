@@ -6,20 +6,20 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 00:40:25 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/12 23:33:03 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 11:30:03 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		get_count(const char *s, char c)
+size_t	get_count(const char *s, char c)
 {
-	size_t	cnt;
+	size_t	count;
 	size_t	i;
 	int		flag;
 
 	i = 0;
-	cnt = 0;
+	count = 0;
 	flag = 0;
 	while (s[i])
 	{
@@ -27,15 +27,15 @@ size_t		get_count(const char *s, char c)
 			flag = 0;
 		else if (!flag && s[i] != c && s[i])
 		{
-			cnt++;
+			count++;
 			flag = 1;
 		}
 		i++;
 	}
-	return (cnt);
+	return (count);
 }
 
-void		copy(char *dst, char const *src, size_t start, size_t end)
+void	copy(char *dst, char const *src, size_t start, size_t end)
 {
 	size_t	i;
 
@@ -45,7 +45,7 @@ void		copy(char *dst, char const *src, size_t start, size_t end)
 	dst[i] = 0;
 }
 
-void		split(char const *s, char c, char **str)
+void	split(char const *s, char c, char **str)
 {
 	size_t	start;
 	size_t	i;
@@ -71,7 +71,7 @@ void		split(char const *s, char c, char **str)
 	}
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**str;
 	size_t	n;

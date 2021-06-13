@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 18:10:01 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 01:11:03 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 11:16:58 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 		x--;
 	return (ft_substr(s1, 0, x + 1));
 }
-

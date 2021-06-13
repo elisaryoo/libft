@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 17:04:51 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/11 00:37:19 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 11:13:33 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char *s;
-	unsigned char *d;
+	unsigned char	*s;
+	unsigned char	*d;
 	
 	s = (unsigned char *)src;
 	d = (unsigned char *)dst;

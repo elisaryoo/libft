@@ -6,13 +6,13 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:07:25 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/09 16:08:49 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 10:52:16 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_bzero(void *s, size_t len)
+void	ft_bzero(void *s, size_t len)
 {
-    ft_memset(s, '\0', len);
+	ft_memset(s, '\0', len);
 }

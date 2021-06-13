@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 20:34:57 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/10 20:39:41 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 11:14:02 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-    if (s != NULL)
-    {
-        ft_putstr_fd(s, fd);
-        ft_putchar_fd('\n', fd);
-    }
+	if (s != NULL)
+	{
+		ft_putstr_fd(s, fd);
+		ft_putchar_fd('\n', fd);
+	}
 }

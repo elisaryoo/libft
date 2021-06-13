@@ -6,13 +6,13 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 16:22:43 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/09 17:03:39 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 11:06:47 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    *ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	unsigned char *dest;
 	unsigned char *source;
@@ -27,10 +27,10 @@ void    *ft_memccpy(void *dst, const void *src, int c, size_t n)
 	{
 		dest[i] = source[i];
 		if ((unsigned char)c == source[i])
-        {
-            dst = dest;
-            return (dst + i + 1);
-        }
+		{
+			dst = dest;
+			return (dst + i + 1);
+		}
 		i++;
 	}
 	dst = dest;
