@@ -6,100 +6,84 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 00:40:25 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/12 15:31:06 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/12 23:33:03 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		**ft_allfree(char **res)
+size_t		get_count(const char *s, char c)
 {
+	size_t	cnt;
 	size_t	i;
+	int		flag;
 
 	i = 0;
-	while (res[i])
-	{
-		free(res[i]);
-		i++;
-	}
-	free(res);
-	return (NULL);
-}
-
-static size_t	getsize(char const *s, char c)
-{
-	size_t	i;
-	size_t	size;
-
-	if (!s[0])
-		return (0);
-	i = 0;
-	size = 0;
-	while (s[i] && s[i] == c)
-		i++;
+	cnt = 0;
+	flag = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == c && s[i])
+			flag = 0;
+		else if (!flag && s[i] != c && s[i])
 		{
-			size++;
-			while (s[i] && s[i] == c)
-				i++;
-			continue ;
+			cnt++;
+			flag = 1;
 		}
 		i++;
 	}
-	if (s[i - 1] != c)
-		size++;
-	return (size);
+	return (cnt);
 }
 
-static size_t	ft_getlen(char *str, char c)
+void		copy(char *dst, char const *src, size_t start, size_t end)
 {
-	size_t i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
-static char		**ft_result(char **res, char const *s, size_t size, char c)
-{
-	char	*str;
 	size_t	i;
-	size_t	next_len;
 
 	i = 0;
-	str = (char *)s;
-	next_len = 0;
-	while (i < size)
-	{
-		while (*str == c)
-			str++;
-		next_len = ft_getlen(str, c);
-		if (!(res[i] = (char *)malloc(sizeof(char) * (next_len + 1))))
-			return (ft_allfree(res));
-		ft_strlcpy(res[i], str, next_len + 1);
-		str += next_len;
-		i++;
-	}
-	res[i] = NULL;
-	return (res);
+	while (start < end)
+		dst[i++] = src[start++];
+	dst[i] = 0;
 }
 
-char			**ft_split(char const *s, char c)
+void		split(char const *s, char c, char **str)
 {
-	char	**res;
-	size_t	size;
+	size_t	start;
+	size_t	i;
+	size_t	j;
 
-	if (!s)
+	start = 0;
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (s[i] != c && s[i])
+		{
+			start = i;
+			while (s[i] != c && s[i])
+				i++;
+			if (!(str[j] = (char *)malloc(sizeof(char) * (i - start + 1))))
+				return ;
+			copy(str[j], s, start, i);
+			j++;
+		}
+		else if (s[i])
+			i++;
+	}
+}
+
+char		**ft_split(char const *s, char c)
+{
+	char	**str;
+	size_t	n;
+
+	if (s == 0)
 		return (NULL);
-	size = getsize(s, c);
-	if (!(res = (char **)malloc(sizeof(char *) * (size + 1))))
+	n = get_count(s, c);
+	if (!(str = (char **)malloc(sizeof(char *) * (n + 1))))
 		return (NULL);
-	return (ft_result(res, s, size, c));
+	str[n] = 0;
+	if (n == 0)
+		return (str);
+	split(s, c, str);
+	return (str);
 }

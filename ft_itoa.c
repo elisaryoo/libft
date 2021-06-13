@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 21:05:55 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/12 11:34:09 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 01:02:03 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static size_t		getlen(int num)
 		return (1);
 	if (num < 0)
 	{
-		num *= -1;
+		num *= -1; 
 		len++;
 	}
 	while (num > 0)
