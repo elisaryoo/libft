@@ -6,97 +6,97 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 00:40:25 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 17:04:22 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/06/13 17:07:46 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	get_count(const char *s, char c)
+static size_t	get_wordsnum(const char *s, char c)
 {
-	int		flag;
-	size_t	count;
+	int		is_word;
+	size_t	words;
 
-	count = 0;
-	flag = 0;
+	words = 0;
+	is_word = 0;
 	while (*s)
 	{
-		if (!flag && *s != c)
+		if (!is_word && *s != c)
 		{
-			flag = 1;
-			count++;
+			is_word = 1;
+			words++;
 		}
-		else if (flag && *s == c)
-			flag = 0;
+		else if (is_word && *s == c)
+			is_word = 0;
 		s++;
 	}
-	return (count);
+	return (words);
 }
 
 static size_t	get_wordlen(const char *s, char c)
 {
-	size_t	l;
+	size_t	offset;
 
-	l = 0;
-	while (s[l] && s[l] != c)
-		l++;
-	return (l);
+	offset = 0;
+	while (s[offset] && s[offset] != c)
+		offset++;
+	return (offset);
 }
 
-static char	*copy(const char *s, size_t len)
+static char	*worddup(const char *s, size_t len)
 {
 	char	*str;
-	size_t	x;
+	size_t	offset;
 
 	str = malloc(len + 1);
 	if (str == NULL)
 		return (NULL);
-	x = 0;
-	while (x < len)
+	offset = 0;
+	while (offset < len)
 	{
-		str[x] = s[x];
-		x++;
+		str[offset] = s[offset];
+		offset++;
 	}
-	str[x] = '\0';
+	str[offset] = '\0';
 	return (str);
 }
 
-static void	*kill(char **str, size_t stop)
+static void	*kill(char **res, size_t stop)
 {
-	size_t	i;
+	size_t	counter;
 
-	i = 0;
-	while (i < stop)
-		free(str[i]);
-	free(str);
+	counter = 0;
+	while (counter < stop)
+		free(res[counter]);
+	free(res);
 	return (NULL);
 }
 
 char	**ft_split(const char *s, char c)
 {
-	char	**str;
+	char	**res;
 	size_t	len;
 	size_t	words;
-	size_t	i;
+	size_t	counter;
 
 	if (s == NULL)
 		return (NULL);
-	words = get_count(s, c);
-	str = malloc((words + 1) * sizeof(char *));
-	if (str == NULL)
+	words = get_wordsnum(s, c);
+	res = malloc((words + 1) * sizeof(char *));
+	if (res == NULL)
 		return (NULL);
-	i = 0;
-	while (i < words)
+	counter = 0;
+	while (counter < words)
 	{
 		len = get_wordlen(s, c);
 		if (len)
 		{
-			str[i] = copy(s, len);
-			if (str[i++] == NULL)
-				return (kill(str, i - 1));
+			res[counter] = worddup(s, len);
+			if (res[counter++] == NULL)
+				return (kill(res, counter - 1));
 		}
 		s += len + 1;
 	}
-	str[i] = '\0';
-	return (str);
+	res[counter] = NULL;
+	return (res);
 }
