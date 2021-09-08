@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 00:40:25 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 17:07:46 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/09/08 07:33:47 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ static size_t	get_wordsnum(const char *s, char c)
 
 static size_t	get_wordlen(const char *s, char c)
 {
-	size_t	offset;
+	size_t	length;
 
-	offset = 0;
-	while (s[offset] && s[offset] != c)
-		offset++;
-	return (offset);
+	length = 0;
+	while (s[length] && s[length] != c)
+		length++;
+	return (length);
 }
 
 static char	*worddup(const char *s, size_t len)

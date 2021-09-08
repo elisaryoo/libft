@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 11:04:54 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 11:19:42 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/09/08 07:20:22 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,26 @@ static int	ft_escape(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
-	int	num;
+	int	nbr;
 	int	sign;
 
-	while ((ft_escape(*nptr)))
-		nptr++;
+	while ((ft_escape(*str)))
+		str++;
 	sign = 1;
-	if (*nptr == '+' || *nptr == '-')
+	if (*str == '+' || *str == '-')
 	{
-		if (*nptr == '-')
+		if (*str == '-')
 			sign = -1;
-		nptr++;
+		str++;
 	}
-	num = 0;
-	while ((ft_isdigit(*nptr)))
+	nbr = 0;
+	while ((ft_isdigit(*str)))
 	{
-		num *= 10;
-		num += sign * (*nptr - '0');
-		nptr++;
+		nbr *= 10;
+		nbr += sign * (*str - '0');
+		str++;
 	}
-	return (num);
+	return (nbr);
 }

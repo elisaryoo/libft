@@ -6,7 +6,7 @@
 /*   By: eryoo <eryoo@student.42sp.org.br>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 21:05:55 by eryoo             #+#    #+#             */
-/*   Updated: 2021/06/13 12:28:39 by eryoo            ###   ########.fr       */
+/*   Updated: 2021/09/08 07:25:22 by eryoo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,30 @@ static size_t	getlen(int num)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int nbr)
 {
 	char	*str;
 	int		i;
 
-	if (n == -2147483648)
+	if (nbr == -2147483648)
 		return (ft_strdup("-2147483648"));
-	i = getlen(n);
+	i = getlen(nbr);
 	str = (char *)malloc(i + 1);
 	if (str == NULL)
 		return (NULL);
 	str[i] = '\0';
 	i--;
-	if (n == 0)
+	if (nbr == 0)
 		str[0] = '0';
-	else if (n < 0)
+	else if (nbr < 0)
 	{
 		str[0] = '-';
-		n *= -1;
+		nbr *= -1;
 	}
-	while (n > 0)
+	while (nbr > 0)
 	{
-		str[i] = '0' + (n % 10);
-		n /= 10;
+		str[i] = '0' + (nbr % 10);
+		nbr /= 10;
 		i--;
 	}
 	return (str);
